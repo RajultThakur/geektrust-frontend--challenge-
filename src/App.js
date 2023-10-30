@@ -73,14 +73,14 @@ function App() {
     }
   };
 
-  // To delete the data 
+  // To delete the data
   const handleDelete = (dataToDelete) => {
     let newData = actualData.filter((data) => !dataToDelete.includes(data.id));
     setActualData(newData);
     setDataToBeDeleted([]);
   };
 
-  // this function will perform edit operation 
+  // this function will perform edit operation
   const handleEdit = (data) => {
     setShow(true);
     setIsDisabled(data.id);
@@ -96,7 +96,7 @@ function App() {
     let arr = [...actualData];
     arr[data.id - 1] = { data };
     setActualData(arr);
-    setIsDisabled(-1)
+    setIsDisabled(-1);
     setShow(false);
   };
 
@@ -203,50 +203,56 @@ function App() {
       </table>
       <div className="actionButtons">
         <div className="deleteButton">
-
-        <button
-          style={{ borderRadius: "5px", backgroundColor: "red" }}
-          className=""
-          onClick={() => {
-            handleDelete(dataToBeDeleted);
-          }}
+          <button
+            style={{ borderRadius: "5px", backgroundColor: "red" }}
+            className=""
+            onClick={() => {
+              handleDelete(dataToBeDeleted);
+            }}
           >
-          Delete Selected
-        </button>
+            Delete Selected
+          </button>
+        </div>
+        <div className="page-count-button">
+          <button
+            onClick={() => {
+              let page = currentPage === 1 ? 5 : currentPage - 1;
+              handleChange(page);
+            }}
+            style={{ color: "#009879", padding: "5px" }}
+          >
+            <ArrowBackIosNewOutlinedIcon />
+          </button>
+          {Array.from({ length: pageCount }, (_, i) => {
+            return (
+              <button
+                className={`${i + 1 === currentPage ? "active" : "non-active"}`}
+                key={i}
+                onClick={() => handleChange(i + 1)}
+              >
+                {i + 1}
+              </button>
+            );
+          })}
+          <button
+            onClick={() => {
+              handleChange((currentPage % 5) + 1);
+            }}
+            style={{ color: "#009879", padding: "5px" }}
+          >
+            <ArrowForwardIosOutlinedIcon />
+          </button>
+        </div>
+        <a
+          style={{ color: "#009879" }}
+          href="https://github.com/RajultThakur"
+          blank
+        >
+          <div style={{ fontWeight: "bold" }}>
+            Made by Rajul Thakur{" "}
+            <span style={{ color: "red", fontSize: "18px" }}>❤</span>
           </div>
-<div className="page-count-button">
-
-        <button
-          onClick={() => {
-            let page = currentPage === 1 ? 5 : currentPage - 1;
-            handleChange(page);
-          }}
-          style={{color:"#009879", padding:'5px'}}
-          >
-          <ArrowBackIosNewOutlinedIcon />
-        </button>
-        {Array.from({ length: pageCount }, (_, i) => {
-          return (
-            <button
-            className={`${i + 1 === currentPage ? "active" : "non-active"}`}
-            key={i}
-            onClick={() => handleChange(i + 1)}
-            >
-              {i + 1}
-            </button>
-          );
-        })}
-        <button
-          onClick={() => {
-            handleChange((currentPage % 5) + 1);
-          }}
-          style={{color:"#009879", padding:'5px'}}
-          >
-          <ArrowForwardIosOutlinedIcon />
-        </button>
-            </div>
-        <a style={{color:"#009879"}} href="https://github.com/RajultThakur" blank>
-          <div style={{fontWeight:"bold"}}>Made by Rajul Thakur <span style={{color:"red", fontSize:"18px"}}>❤</span></div></a>
+        </a>
       </div>
     </div>
   );
