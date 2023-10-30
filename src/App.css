@@ -1,38 +1,112 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  /* width: 100%; */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+  margin-top: 10px;
+}
+.search {
+  width: 80%;
+  display: flex;
+}
+
+.search input {
+  flex: 1;
+  padding: 10px 15px;
+  outline: none;
+  font-size: 0.9rem;
+  border: 1px solid #dddddd;
+  border-radius: 5px;
+}
+.table {
+  border-collapse: collapse;
+  margin: 5px 0px;
+  /* width: 100%; */
+  width: 80%;
+  font-size: 0.9rem;
+  min-width: 400px;
+  border-radius: 5px 5px 0px 0px;
+  overflow: scroll;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+  font-weight: bold;
+}
+
+.table th,
+.table td {
+  padding: 8px 15px;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+}
+
+.table tbody tr th {
+  font-weight: 400;
+}
+
+.table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
+
+.dataField th input {
+  outline: none;
+  border: none;
+}
+
+.dataField-edit th input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.actionButtons button {
+  border-radius: 50%;
+  outline: none;
+  padding: 6px 10px;
+  border: 1px solid #f3f3f3;
+  margin-inline: 5px;
   color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.deleteAndEdit button {
+  outline: none;
+  padding: 0px;
+  border: none;
+  margin: 0px 5px;
+  cursor: pointer;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.deleteAndEdit button:last-child {
+  color: red;
+}
+.actionButtons {
+  display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.page-count-button{
+  display: flex;
+  align-items: center
+}
+.active {
+  background-color: rgb(99, 249, 249);
+}
+.non-active {
+  background-color: #009879;
 }
